@@ -21,7 +21,7 @@ const AllUser = () => {
       ];
       
       useEffect(() => {
-        axios.get('http://localhost:8080/users').then((res)=>{
+        axios.get('http://localhost:8080/admin/users').then((res)=>{
           setAllUserList(res.data)
         })
        

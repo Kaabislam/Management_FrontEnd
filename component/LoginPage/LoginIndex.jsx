@@ -15,9 +15,20 @@ const LoginIndex = () => {
         
        
         axios.post('http://localhost:8080/authenticate', data).then((rec)=>{
-          console.log(rec.status)
+          // console.log(rec.status)
           if(rec.status===200){
-            router.push('/dashboard');
+            console.log(rec.data.user.roleType)
+            if(rec.data.user.roleType == "ADMIN"){
+              router.push('/dashboard');
+            }
+            if(rec.data.user.roleType == "STUDENT"){
+              router.push('/studentdashboard');
+            }
+            if(rec.data.user.roleType == "TEACHER"){
+              router.push('/teacherdashboard');
+            }
+
+            // router.push('/dashboard');
           }
         })
       };

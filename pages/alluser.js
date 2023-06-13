@@ -8,7 +8,7 @@ export default function Alluser() {
 
   return (
     <Container maxWidth="sm">
-      <Typography>All User</Typography>
+   
       <AllUser />
     </Container>
   );

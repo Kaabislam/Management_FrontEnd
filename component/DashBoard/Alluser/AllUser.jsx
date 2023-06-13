@@ -1,24 +1,35 @@
-import { Button, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material'
+import { Box, Button, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography, styled, tableCellClasses } from '@mui/material'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  '&:nth-of-type(odd)': {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  '&:last-child td, &:last-child th': {
+    border: 0,
+  },
+}));
+
 const AllUser = () => {
   const [allUserList,setAllUserList] =useState([])
     const router = useRouter();
-    const { register, handleSubmit } = useForm();
-    function createData(name, calories, fat, carbs, protein) {
-        return { name, calories, fat, carbs, protein };
-      }
-    const rows = [
-        createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-        createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-        createData('Eclair', 262, 16.0, 24, 6.0),
-        createData('Cupcake', 305, 3.7, 67, 4.3),
-        createData('Gingerbread', 356, 16.0, 49, 3.9),
-      ];
+  
+    
       
       useEffect(() => {
         axios.get('http://localhost:8080/admin/users').then((res)=>{
@@ -37,35 +48,44 @@ console.log(allUserList)
     
   return (
     <>
+    <Grid container sx={{justifyContent:"center",paddingTop:"3%"}}>
+      <Typography variant='h4'>
+        All Users
+      </Typography>
+    </Grid>
+    <Box>
     <Grid container sx={{justifyContent:"center"}}>
+    <Paper sx={{width:"800px" ,padding:"2%"}} elevation={5} >
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
-        <TableHead>
+        <TableHead sx={{height:"60px"}}>
           <TableRow>
-            <TableCell>User Name</TableCell>
-            <TableCell align="right">Email</TableCell>
-            <TableCell align="right">Role Type</TableCell>
+            <StyledTableCell>User Name</StyledTableCell>
+            <StyledTableCell align="center">Email</StyledTableCell>
+            <StyledTableCell align="center">Role Type</StyledTableCell>
             
           </TableRow>
         </TableHead>
         <TableBody>
           {allUserList.map((item) => (
-            <TableRow
+            <StyledTableRow
               key={item.userName}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
+              <StyledTableCell component="th" scope="row">
                 {item.userName}
-              </TableCell>
-              <TableCell align="right">{item.email}</TableCell>
-              <TableCell align="right">{item.roleType}</TableCell>
+              </StyledTableCell>
+              <StyledTableCell align="center">{item.email}</StyledTableCell>
+              <StyledTableCell align="center">{item.roleType}</StyledTableCell>
              
-            </TableRow>
+            </StyledTableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
+    </Paper>
     </Grid>
+    </Box>
     </>
   )
 }

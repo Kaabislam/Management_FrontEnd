@@ -22,6 +22,11 @@ const handleDeactive=()=>{
 
   return (
     <>
+    <Box>
+      <Grid container sx={{justifyContent:"center",paddingBottom:"3%",paddingTop:"1%"}}>
+<Typography variant='h4'>Admin Page</Typography>
+      </Grid>
+    </Box>
     <Box  sx={{justifyContent:"center"}}>
       <Grid container sx={{paddingTop:"10%"}}>
       <Paper sx={{width:"500px" ,padding:"3%"}} elevation={3}>
@@ -36,7 +41,7 @@ const handleDeactive=()=>{
     </Paper>
     <Paper  sx={{width:"500px" ,padding:"3%"}}elevation={3}>
     <Grid container sx={{justifyContent:"center"}}>
-    <Button variant="outlined" onClick={()=>handleAllUser()}>All User</Button>
+    <Button variant="outlined" onClick={()=>handleAllUser()}>View User List</Button>
    </Grid>
    </Paper>
    </Grid>

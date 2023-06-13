@@ -8,9 +8,6 @@ export default function Activeuser() {
 
   return (
     <Container maxWidth="sm">
-     <Typography>
-        Activate User
-     </Typography>
      <StudentAddIndex/>
     </Container>
   );

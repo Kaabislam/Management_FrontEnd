@@ -1,5 +1,5 @@
 
-import { Button, Grid, Paper, TextField, Typography } from '@mui/material'
+import { Box, Button, Grid, Paper, TextField, Typography } from '@mui/material'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -25,28 +25,32 @@ const DeactivateUser = () => {
 
   return (
     <>
-      <Grid container sx={{ justifyContent: "center" }}>
-        <Paper>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <Grid xs={12}>
-              <Typography variant='h4'> Deactivate a User Account </Typography>
-            </Grid>
-            <Grid xs={12}>
-              <TextField
-                fullWidth
-                label="User Id"
-                variant="outlined"
-                {...register("userName", {
-                  required: true,
-                })}
-              />
-            </Grid>
-            <Grid xs={12}>
-              <Button type="submit"> Deactivate Account </Button>
-            </Grid>
-          </form>
-        </Paper>
+
+    <Box>
+      <Grid container sx={{justifyContent:"center",paddingBottom:"6%",paddingTop:"6%"}}>
+<Typography variant='h4'>Deactivate A User</Typography>
       </Grid>
+    </Box>
+    <Grid container sx={{justifyContent:"center"}}>
+        <Paper sx={{width:"700px"}} elevation={3} >
+          <Box sx={{padding:"2%"}}>   
+        <form onSubmit={handleSubmit(onSubmit)}>
+         <Grid container xs={12} sx={{justifyContent:"center"}}>
+       <Typography  variant='h4' > User Info</Typography>
+       </Grid>
+       <Grid xs={12} sx={{padding:"1%"}}>
+       <TextField fullWidth label="User name" variant="outlined" {...register("userName", {
+                      required: false,
+                    })} />
+       </Grid>
+      
+       <Grid container xs={12} sx={{justifyContent:"center"}}>
+       <Button   variant="contained" type="submit"> Submit</Button>
+       </Grid>
+       </form>
+       </Box>
+       </Paper>
+    </Grid>
     </>
   )
 }

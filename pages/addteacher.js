@@ -10,9 +10,7 @@ export default function Addstudent() {
   
   return (
     <Container maxWidth="sm">
-     <Typography>
-        Add Teacher
-     </Typography>
+     
      <TeacherAddIndex/>
     </Container>
   );

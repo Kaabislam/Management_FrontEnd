@@ -62,7 +62,7 @@ console.log(allUserList)
           <TableRow>
             <StyledTableCell>User Name</StyledTableCell>
             <StyledTableCell align="center">Email</StyledTableCell>
-            <StyledTableCell align="center">Role Type</StyledTableCell>
+            <StyledTableCell align="center">Role </StyledTableCell>
             
           </TableRow>
         </TableHead>

@@ -9,9 +9,7 @@ export default function Addstudent() {
   
   return (
     <Container maxWidth="sm">
-     <Typography>
-        Add Student
-     </Typography>
+    
      <StudentAddIndex/>
     </Container>
   );

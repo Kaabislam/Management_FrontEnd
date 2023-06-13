@@ -10,9 +10,7 @@ export default function Activeuser() {
 
   return (
     <Container maxWidth="sm">
-     <Typography>
-        Deactivate User
-     </Typography>
+     
      <DeactivateUser/>
     </Container>
   );

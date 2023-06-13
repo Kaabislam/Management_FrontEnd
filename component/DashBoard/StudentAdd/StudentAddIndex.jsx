@@ -1,76 +1,5 @@
-// import { Button, Grid, Paper, TextField, Typography } from '@mui/material'
-// import axios from 'axios'
-// import { useRouter } from 'next/router'
-// import React from 'react'
-// import { useState } from 'react'
-// import { useForm } from 'react-hook-form'
 
-
-
-
-
-
-
-// const StudentAddIndex = () => {
-//     const router = useRouter();
-//     const { register, handleSubmit } = useForm();
-
-
-//     const onSubmit = (data) => {
-//         console.log(data)
-        
-        
-//         // router.push('/dashboard');
-//         // axios.post('/user', data)
-//       };
-    
-//   return (
-//     <>
-//     <Grid container sx={{justifyContent:"center"}}>
-//         <Paper>
-//         <form onSubmit={handleSubmit(onSubmit)}>
-//          <Grid xs={12}>
-//        <Typography  variant='h4'> Student Details</Typography>
-//        </Grid>
-//        <Grid xs={12}>
-//        <TextField fullWidth label="Student Name" variant="outlined" {...register("userName", {
-//                       required: false,
-//                     })} />
-//        </Grid>
-//        <Grid xs={12}>
-//        <TextField fullWidth type="password" label="Password" variant="outlined" {...register("userPassword", {
-//                       required: false,
-//                     })} />
-//        </Grid>
-//        <Grid xs={12}>
-//        <TextField fullWidth type="password" label="Advisor Id" variant="outlined" {...register("advisorId", {
-//                       required: false,
-//                     })} />
-//        </Grid>
-//        <Grid xs={12}>
-//        <TextField fullWidth type="password" label="Status Type" variant="outlined" {...register("activationStatus", {
-//                       required: false,
-//                     })} />
-//        </Grid>
-//        <Grid xs={12}>
-//        <Button    type="submit"> Add student</Button>
-//        </Grid>
-//        </form>
-//        </Paper>
-//     </Grid>
-//     </>
-//   )
-// }
-
-
-
-
-// export default StudentAddIndex
-
-
-
-
-import { Button, Grid, Paper, TextField, Typography } from '@mui/material'
+import { Box, Button, Grid, Paper, TextField, Typography } from '@mui/material'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -92,7 +21,8 @@ const StudentAddIndex = () => {
         userPassword: data.userPassword,
         roleType: "STUDENT",
         email: data.email,
-        activationStatus: "ACTIVE"
+        activationStatus: "ACTIVE",
+        departmentName:data.departmentName
       }
     }
 
@@ -100,7 +30,7 @@ const StudentAddIndex = () => {
       const response = await axios.put('http://localhost:8080/admin/registerNewStudent', jsonData)
       console.log(response.status)
       // Redirect to the desired page
-      // router.push('/dashboard');
+      router.push('/dashboard');
     } catch (error) {
       console.error(error)
     }
@@ -108,61 +38,52 @@ const StudentAddIndex = () => {
 
   return (
     <>
-      <Grid container sx={{ justifyContent: "center" }}>
-        <Paper>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <Grid xs={12}>
-              <Typography variant='h4'> Student Details</Typography>
-            </Grid>
-            <Grid xs={12}>
-              <TextField
-                fullWidth
-                label="Student Name"
-                variant="outlined"
-                {...register("userName", {
-                  required: false,
-                })}
-              />
-            </Grid>
-            <Grid xs={12}>
-              <TextField
-                fullWidth
-                type="password"
-                label="Password"
-                variant="outlined"
-                {...register("userPassword", {
-                  required: false,
-                })}
-              />
-            </Grid>
-            <Grid xs={12}>
-              <TextField
-                fullWidth
-                type="password"
-                label="Advisor Id"
-                variant="outlined"
-                {...register("advisorId", {
-                  required: false,
-                })}
-              />
-            </Grid>
-            <Grid xs={12}>
-              <TextField
-                fullWidth
-                type="password"
-                label="Status Type"
-                variant="outlined"
-                {...register("activationStatus", {
-                  required: false,
-                })}
-              />
-            </Grid>
-            <Grid xs={12}>
-              <Button type="submit"> Add student</Button>
-            </Grid>
-          </form>
-        </Paper>
+
+    <Box>
+      <Grid container sx={{justifyContent:"center",paddingBottom:"6%",paddingTop:"6%"}}>
+<Typography variant='h4'>Register New Student</Typography>
       </Grid>
+    </Box>
+    <Grid container sx={{justifyContent:"center"}}>
+        <Paper sx={{width:"700px"}} elevation={3} >
+          <Box sx={{padding:"2%"}}>   
+        <form onSubmit={handleSubmit(onSubmit)}>
+         <Grid container xs={12} sx={{justifyContent:"center"}}>
+       <Typography  variant='h4' > Student Information</Typography>
+       </Grid>
+       <Grid xs={12} sx={{padding:"1%"}}>
+       <TextField fullWidth label="User name" variant="outlined" {...register("userName", {
+                      required: false,
+                    })} />
+       </Grid>
+       <Grid xs={12} sx={{padding:"1%"}}>
+       <TextField fullWidth label="Email" variant="outlined" {...register("email", {
+                      required: false,
+                    })} />
+       </Grid>
+       <Grid xs={12} sx={{padding:"1%"}}>
+       <TextField fullWidth label="Advisor Id" variant="outlined" {...register("advisorId", {
+                      required: false,
+                    })} />
+       </Grid>
+
+       <Grid xs={12} sx={{padding:"1%"}}>
+       <TextField fullWidth label="Department Name" variant="outlined" {...register("departmentName", {
+                      required: false,
+                    })} />
+       </Grid>
+       <Grid xs={12} sx={{padding:"1%"}}>
+       <TextField fullWidth type="password" label="Password" variant="outlined" {...register("userPassword", {
+                      required: false,
+                    })} />
+       </Grid>
+       <Grid container xs={12} sx={{justifyContent:"center"}}>
+       <Button   variant="contained" type="submit"> Submit</Button>
+       </Grid>
+       </form>
+       </Box>
+       </Paper>
+    </Grid>
     </>
   )
 }

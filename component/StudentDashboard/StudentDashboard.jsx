@@ -36,7 +36,7 @@ export default function StudentDashBoard() {
     <>
     <Box>
       <Grid container sx={{justifyContent:"center",paddingBottom:"3%",paddingTop:"1%"}}>
-<Typography variant='h4'>Student Page</Typography>
+<Typography variant='h4'>Student Dashboard</Typography>
       </Grid>
     </Box>
     <Box  sx={{justifyContent:"center"}}>

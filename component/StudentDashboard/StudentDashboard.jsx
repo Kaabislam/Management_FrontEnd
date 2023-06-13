@@ -1,4 +1,4 @@
-import { Container, Typography, Button, Grid } from "@mui/material";
+import { Container, Typography, Button, Grid, Box, Paper } from "@mui/material";
 import { useRouter } from "next/router";
 
 export default function StudentDashBoard() {
@@ -27,29 +27,49 @@ export default function StudentDashBoard() {
         router.push('/resetpasswordstudent');
       }
 
+      const handleEditProfileStudent=()=>{
+        router.push('/editprofilestudent');
+      }
+
 
   return (
-    <Container maxWidth="sm">
-      <Grid container>
-      <Grid xs={3}>
-    <Button onClick={()=>handleViewProfileStudent()}>View Profile</Button>
+    <>
+    <Box>
+      <Grid container sx={{justifyContent:"center",paddingBottom:"3%",paddingTop:"1%"}}>
+<Typography variant='h4'>Student Page</Typography>
+      </Grid>
+    </Box>
+    <Box  sx={{justifyContent:"center"}}>
+      <Grid container sx={{paddingTop:"10%"}}>
+      <Paper sx={{width:"500px" ,padding:"3%"}} elevation={3}>
+      <Grid container sx={{justifyContent:"center"}}>    
+<Button variant="outlined" onClick={()=>handleAddstd()}>View Profile</Button>    
+</Grid>
+</Paper>
+<Paper  sx={{width:"500px" ,padding:"3%"}} elevation={3}>
+    <Grid container  sx={{justifyContent:"center"}}>
+    <Button variant="outlined" onClick={()=>handleEditProfileStudent()}>Edit Profile</Button>
     </Grid>
-
-    <Grid xs={3}>
-    <Button onClick={()=>handleResetPasswordStudent()}>Reset Password</Button>
-    </Grid>
-
-    <Grid xs={3}>
-    <Button onClick={()=>handleAllUser()}>Edit Profile</Button>
+    </Paper>
+    <Paper  sx={{width:"500px" ,padding:"3%"}}elevation={3}>
+    <Grid container sx={{justifyContent:"center"}}>
+    <Button variant="outlined" onClick={()=>handleAllUser()}>Reset Password</Button>
    </Grid>
+   </Paper>
+   </Grid>
+   </Box>
 
-    <Grid xs={3}>
-    <Button onClick={()=>handleAcitve()}>Request A Teacher</Button>
-      </Grid>
-      
 
+   <Grid container >
+   <Paper  sx={{width:"500px" ,padding:"3%"}} elevation={3}>
+    <Grid container sx={{justifyContent:"center"}}>
+    <Button variant="outlined" onClick={()=>handleAcitve()}>Send Request To Teacher</Button>
       </Grid>
+      </Paper>
       
-    </Container>
+      </Grid>
+     
+      </>  
+   
   );
 }

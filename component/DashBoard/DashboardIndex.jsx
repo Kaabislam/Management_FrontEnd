@@ -1,4 +1,4 @@
-import { Container, Typography, Button, Grid } from "@mui/material";
+import { Container, Typography, Button, Grid, Paper, Box } from "@mui/material";
 import { useRouter } from "next/router";
 
 export default function DashboardIndex() {
@@ -21,27 +21,42 @@ const handleDeactive=()=>{
 
 
   return (
-    <Container maxWidth="sm">
-      <Grid container>
-      <Grid xs={3}>
-<Button onClick={()=>handleAddstd()}>Add Student</Button>
+    <>
+    <Box  sx={{justifyContent:"center"}}>
+      <Grid container sx={{paddingTop:"10%"}}>
+      <Paper sx={{width:"500px" ,padding:"3%"}} elevation={3}>
+      <Grid container sx={{justifyContent:"center"}}>    
+<Button variant="outlined" onClick={()=>handleAddstd()}>Add Student</Button>    
+</Grid>
+</Paper>
+<Paper  sx={{width:"500px" ,padding:"3%"}} elevation={3}>
+    <Grid container  sx={{justifyContent:"center"}}>
+    <Button variant="outlined" onClick={()=>handleaddteacher()}>Add Teacher</Button>
     </Grid>
-    <Grid xs={3}>
-    <Button onClick={()=>handleaddteacher()}>Add Teacher</Button>
-    </Grid>
-    <Grid xs={3}>
-    <Button onClick={()=>handleAllUser()}>All User</Button>
+    </Paper>
+    <Paper  sx={{width:"500px" ,padding:"3%"}}elevation={3}>
+    <Grid container sx={{justifyContent:"center"}}>
+    <Button variant="outlined" onClick={()=>handleAllUser()}>All User</Button>
    </Grid>
+   </Paper>
+   </Grid>
+   </Box>
 
-    <Grid xs={3}>
-    <Button onClick={()=>handleAcitve()}>Activate User</Button>
-      </Grid>
-      <Grid xs={3}>
-    <Button onClick={()=>handleDeactive()}>Deactive User</Button>
-      </Grid>
 
+   <Grid container >
+   <Paper  sx={{width:"500px" ,padding:"3%"}} elevation={3}>
+    <Grid container sx={{justifyContent:"center"}}>
+    <Button variant="outlined" onClick={()=>handleAcitve()}>Activate User</Button>
       </Grid>
-      
-    </Container>
+      </Paper>
+      <Paper  sx={{width:"500px" ,padding:"3%"}} elevation={3}>
+      <Grid container sx={{justifyContent:"center"}}>
+    <Button variant="outlined" onClick={()=>handleDeactive()}>Deactive User</Button>
+      </Grid>
+      </Paper>
+      </Grid>
+     
+      </>  
+   
   );
 }

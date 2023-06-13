@@ -1,4 +1,4 @@
-import { Button, Grid, Paper, TextField, Typography } from '@mui/material'
+import { Box, Button, Grid, Paper, TextField, Typography } from '@mui/material'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -35,26 +35,34 @@ const LoginIndex = () => {
     
   return (
     <>
+
+    <Box>
+      <Grid container sx={{justifyContent:"center",paddingBottom:"6%",paddingTop:"6%"}}>
+<Typography variant='h4'>School Managment</Typography>
+      </Grid>
+    </Box>
     <Grid container sx={{justifyContent:"center"}}>
-        <Paper>
+        <Paper sx={{width:"700px"}} elevation={3} >
+          <Box sx={{padding:"2%"}}>   
         <form onSubmit={handleSubmit(onSubmit)}>
-         <Grid xs={12}>
-       <Typography  variant='h4'> Login</Typography>
+         <Grid container xs={12} sx={{justifyContent:"center"}}>
+       <Typography  variant='h4' > Login</Typography>
        </Grid>
-       <Grid xs={12}>
+       <Grid xs={12} sx={{padding:"1%"}}>
        <TextField fullWidth label="User name" variant="outlined" {...register("userName", {
                       required: false,
                     })} />
        </Grid>
-       <Grid xs={12}>
+       <Grid xs={12} sx={{padding:"1%"}}>
        <TextField fullWidth type="password" label="Password" variant="outlined" {...register("userPassword", {
                       required: false,
                     })} />
        </Grid>
-       <Grid xs={12}>
-       <Button    type="submit"> Submit</Button>
+       <Grid container xs={12} sx={{justifyContent:"center"}}>
+       <Button   variant="contained" type="submit"> Submit</Button>
        </Grid>
        </form>
+       </Box>
        </Paper>
     </Grid>
     </>
